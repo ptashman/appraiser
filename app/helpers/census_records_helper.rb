@@ -1,0 +1,2 @@
+module CensusRecordsHelper
+end

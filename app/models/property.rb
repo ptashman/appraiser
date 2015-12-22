@@ -5,7 +5,8 @@ class Property < ActiveRecord::Base
 
 	def room_demand
 		if census_record = CensusRecord.find_by_zip(zip)
-			census_record.send(:"households#{beds.to_i}_person")
+			households = census_record.send(:"households#{beds.to_i}_person")
+			households / similar.count
 		end
 	end
 
@@ -33,6 +34,10 @@ class Property < ActiveRecord::Base
 
 	def cap_ratio
     avg_rental_price_in_zip / avg_purchase_price_in_zip
+	end
+
+	def score
+		(room_demand + (100000 * cap_ratio)).round(5)
 	end
 
 private

@@ -23,7 +23,7 @@ RSpec.describe Property, :type => :model do
 
   describe "room_demand" do
     it "should return the 555 for purchase property 1" do
-    	expect(purchase_property_1.room_demand).to eq 555
+    	expect(purchase_property_1.room_demand).to eq 250
     end
   end
 
@@ -49,5 +49,11 @@ RSpec.describe Property, :type => :model do
   	it "should return the correct cap ration for the property's zip code" do
   		expect(purchase_property_1.cap_ratio.round(7)).to eq 0.0042857
   	end
+  end
+
+  describe "score" do
+    it "should return the correct property score" do
+      expect(purchase_property_1.score).to eq 678.57143
+    end
   end
 end

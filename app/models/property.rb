@@ -3,9 +3,23 @@ class Property < ActiveRecord::Base
 		price.include?("/mo") if price
 	end
 
+	def bed_count
+    case
+    when beds == nil
+    	nil
+    when beds.to_i >= 7
+      7
+    when beds.to_i <= 1
+      1
+    else
+    	beds.to_i
+    end
+	end
+
 	def room_demand
-		if census_record = CensusRecord.find_by_zip(zip)
-			households = census_record.send(:"households#{beds.to_i}_person")
+		census_record = CensusRecord.find_by_zip(zip)
+		if census_record && bed_count
+			households = census_record.send(:"households#{bed_count}_person")
 			households / similar.count
 		end
 	end
@@ -33,11 +47,15 @@ class Property < ActiveRecord::Base
   end
 
 	def cap_ratio
-    avg_rental_price_in_zip / avg_purchase_price_in_zip
+		if avg_rental_price_in_zip && avg_purchase_price_in_zip
+      avg_rental_price_in_zip / avg_purchase_price_in_zip
+    end
 	end
 
 	def score
-		(room_demand + (100000 * cap_ratio)).round(5)
+		if room_demand && cap_ratio
+		  (room_demand + (100000 * cap_ratio)).round(5)
+		end
 	end
 
 private

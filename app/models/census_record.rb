@@ -8,6 +8,14 @@ class CensusRecord < ActiveRecord::Base
 		households7_plus_person
 	end
 
+	def self.cached_find_by_zip(zip)
+		if @record.try(:zip) == zip
+			@record
+		else
+			@record = find_by_zip(zip)
+		end
+	end
+
 private
 
   def households_with_more_than_1_person

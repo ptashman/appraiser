@@ -23,25 +23,14 @@ RSpec.describe Property, :type => :model do
 
   describe "room_demand" do
     it "should return the 555 for purchase property 1" do
-    	expect(purchase_property_1.room_demand).to eq 250
+    	expect(purchase_property_1.room_demand).to eq 166
     end
   end
 
-  describe "similar" do
+  describe "similar_properties" do
   	it "should return all similar properties" do
-  		expect(purchase_property_1.similar).to eq [rental_property_2, purchase_property_2]
-  	end
-  end
-
-  describe "avg_purchase_price_in_zip" do
-  	it "should return the correct average purchase price for the property's zip code" do
-  		expect(purchase_property_1.avg_purchase_price_in_zip).to eq 350000
-  	end
-  end
-
-  describe "avg_rental_price_in_zip" do
-  	it "should return the correct average rental price for the property's zip code" do
-  		expect(purchase_property_1.avg_rental_price_in_zip).to eq 1500
+      similar = [rental_property_2, purchase_property_1, purchase_property_2]
+  		expect(purchase_property_1.similar_properties).to eq similar
   	end
   end
 
@@ -53,7 +42,7 @@ RSpec.describe Property, :type => :model do
 
   describe "score" do
     it "should return the correct property score" do
-      expect(purchase_property_1.score).to eq 678.57143
+      expect(purchase_property_1.score).to eq 594.57143
     end
   end
 end

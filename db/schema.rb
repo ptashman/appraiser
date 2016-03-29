@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214204435) do
+ActiveRecord::Schema.define(version: 20151228203712) do
 
   create_table "census_records", force: :cascade do |t|
     t.integer  "zip"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151214204435) do
     t.integer  "households7_plus_person"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "credit_score"
   end
 
   create_table "properties", force: :cascade do |t|

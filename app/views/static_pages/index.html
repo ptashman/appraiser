@@ -28,10 +28,11 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-      			<a href="index.html" class="navbar-brand">React</a>
+      			<a href="index.html" class="navbar-brand">Appraisety</a>
     		</div>
     		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       			<ul class="nav navbar-nav navbar-right">
+      				<!--
       				<li class="dropdown">
         				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
           					Home alts <b class="caret"></b>
@@ -90,6 +91,7 @@
 							<li><a href="blogpost.html">Blog Post</a></li>
 				        </ul>
         			</li>
+        		-->
       			</ul>
     		</nav>
   		</div>
@@ -98,15 +100,24 @@
 	<div id="hero">
 		<div class="container">
 			<h1 class="hero-text animated fadeInDown">
-				The best interfaces <br />
-				for your web & mobile apps
+				We grade your potential real estate <br />
+				investments based on our comprehensive, <br />
+				accurate data store.
 			</h1>
+			<!--
 			<p class="sub-text animated fadeInDown">
 				Get a complete existing website with great design up and running in no time.
 			</p>
+		-->
 			<div class="cta animated fadeInDown">
-				<a href="features.html" class="button-outline">See the tour</a>
-				<a href="signup.html" class="button">Sign up free</a>
+				<!--<a href="features.html" class="button-outline">See the tour</a>-->
+				<%# if current_user.try(:subscribed?) %>
+				  <a href="index.html#features" class="button">Enter Property Details</a>
+        <%# elsif current_user %>
+          <a href="memberful_popup" class="button">Subscribe</a>
+        <%# else %>
+          <a href="facebook_popup" class="button">Login</a>
+        <%# end %>
 			</div>
 			<div class="img"></div>
 		</div>
@@ -116,10 +127,11 @@
 		<div class="container">
 			<div class="row header">
 				<div class="col-md-12">
-					<h2>Need an easy way to customize your site?</h2>
-					<p>React is perfect for novice developers and experts alike.</p>
+					<h2>Describe the property you're thinking of purchasing:</h2>
 				</div>
 			</div>
+			<!--
+			PUT FORM HERE. On submit, the user should be redirected to index.html#pricing
 			<div class="row feature">
 				<div class="col-md-6 info">
 					<h4>You don't need to have great technical experience to use your product.</h4>
@@ -149,10 +161,12 @@
 					<%= image_tag "feature2.png", class: "img-reponsive", alt: "feature2" %>
 				</div>
 			</div>
+		-->
 		</div>		
 	</div>
 
 	<div id="pricing">
+		<!-- ENTER RESULTS HERE -->
 		<div class="container">
 			<div class="row header">
 				<div class="col-md-12">
@@ -270,7 +284,7 @@
 			</div>
 		</div>
 	</div>
-
+<!--
 	<div id="slider">
 		<div class="container">
 			<div class="row header">
@@ -377,9 +391,10 @@
 			</div>
 		</div>
 	</div>
-
+-->
 	<div id="footer-white">
 		<div class="container">
+			<!--
 			<div class="row">
 				<div class="col-sm-3 menu">
 					<h3>Overview</h3>
@@ -464,6 +479,7 @@
 					Copyright © 2014. React
 				</div>
 			</div>
+		-->
 		</div>
 	</div>
 </body>

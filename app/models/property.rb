@@ -44,6 +44,10 @@ class Property < ActiveRecord::Base
 		end
 	end
 
+	def top_ten_in_state(state)
+		Property.where(state: state).sort_by { |p| p.score }.first(10).map { |p| "Property #{p.id} has a score of #{p.score}" }
+	end
+
 private
 
 	def self.avg(arr)

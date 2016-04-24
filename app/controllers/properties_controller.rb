@@ -61,6 +61,20 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def evaluate
+    @property = Property.new(property_params)
+    respond_to do |format|
+      if @property.save
+        evaluation = {cap_ratio_grade:    @property.cap_ratio_grade,
+                      room_demand_grade:  @property.room_demand_grade,
+                      credit_score_grade: @property.credit_score_grade}
+        format.json { render json: evaluation, status: 200 }
+      else
+        format.json { render json: @property.errors, status: 500 }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_property
@@ -69,6 +83,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params[:property]
+      params.permit(:zip, :price, :beds, :bathrooms)
     end
 end

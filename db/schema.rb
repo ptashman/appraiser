@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151228203712) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "census_records", force: :cascade do |t|
     t.integer  "zip"
     t.integer  "population"

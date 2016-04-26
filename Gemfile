@@ -12,6 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
+gem 'seed_dump'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -35,9 +36,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'less-rails-bootstrap', '~> 3.0'
 gem "font-awesome-rails"
-
+gem 'pg'
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 

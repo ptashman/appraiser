@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :census_records
   resources :properties
   post 'evaluate_property' => 'properties#evaluate'
+  match '*unmatched_route', :to => 'properties#route_options', via: [:options]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # resources :static_pages
